@@ -69,7 +69,7 @@ function App() {
           dbStatus.connected ? "text-green-600" : "text-red-600"
         }`}
       />
-      <span className="text-sm font-medium">{dbStatus.message}</span>
+      <span className="text-sm font-medium hidden">{dbStatus.message}</span>
     </div>
   );
 
