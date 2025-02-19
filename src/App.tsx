@@ -111,7 +111,7 @@ function App() {
           <div className="flex items-center space-x-2">
             <Music className="w-6 h-6 text-rose-500" />
             <span className="text-xl font-bold bg-gradient-to-r from-rose-600 to-pink-600 text-transparent bg-clip-text">
-              Music Player
+              SD Player
             </span>
           </div>
           <div className="flex items-center space-x-4">
@@ -129,7 +129,7 @@ function App() {
               className="flex items-center space-x-1 text-rose-600 hover:text-rose-800 transition-colors duration-200"
             >
               <Music className="w-5 h-5" />
-              <span>Player</span>
+              <span>Home</span>
             </button>
             <button
               onClick={handleLogout}
