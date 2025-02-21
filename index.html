@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
     <link
       rel="icon"
       type="image/svg+xml"
@@ -11,9 +10,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#dc2674" />
     <title>SD Player</title>
+    <link rel="stylesheet" href="/path/to/styles.css" />
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <img
+        id="intro-image"
+        src="./src/components/deepu profile.jpeg"
+        alt="Intro Image"
+      />
+    </div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const introImage = document.getElementById("intro-image");
+        introImage.style.animation = "fadeInSlideDown 2s forwards";
+      });
+    </script>
   </body>
 </html>
