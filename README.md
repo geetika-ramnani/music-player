@@ -9,8 +9,8 @@ A simple website similar to Spotify in which you can stream songs, and upload th
 
 ## Screenshots
 
-![App Screenshot]("output1.png")
-![App Screenshot]("output2.png")
-![App Screenshot]("output3.png")
+![]("./output1.png")
+![]("./output2.png")
+![]("./output3.png")
 
 
