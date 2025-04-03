@@ -4,6 +4,8 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import AdminPanel from "./components/AdminPanel";
 import MusicPlayer from "./components/MusicPlayer";
+import img from "./components/deepu profile.jpeg";
+import Logo from "./components/logo1.svg";
 
 // Define the backend URL as a constant
 const BACKEND_URL = "https://sdp-ejbl.onrender.com"; // Replace with your deployed backend URL
@@ -109,7 +111,7 @@ function App() {
       <nav className="bg-white/80 backdrop-blur-md shadow-md p-4 sticky top-0 z-50">
         <div className="container mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-2">
-            <Music className="w-6 h-6 text-rose-500" />
+            <img src={Logo} alt="Logo" className="w-10 h-10 rounded-full" />
             <span className="text-xl font-bold bg-gradient-to-r from-rose-600 to-pink-600 text-transparent bg-clip-text">
               SD Player
             </span>
@@ -150,6 +152,18 @@ function App() {
         )}
       </main>
       {renderDbStatus()}
+      <footer
+        className="text-center py-2 shadow-md"
+        style={{ backgroundColor: "white", color: "#dc2674" }}
+      >
+        Built with ❤️ by
+        <img
+          src={img}
+          alt="Avatar"
+          className="inline-block w-6 h-6 rounded-full mx-2"
+        />
+        S Pranav (Deepu)
+      </footer>
     </div>
   );
 }
