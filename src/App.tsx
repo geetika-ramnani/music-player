@@ -7,6 +7,8 @@ import MusicPlayer from "./components/MusicPlayer";
 import img from "./components/deepu profile.jpeg";
 import Logo from "./components/logo1.svg";
 
+import { Analytics } from "@vercel/analytics/react";
+
 // Define the backend URL as a constant
 const BACKEND_URL = "https://sdp-ejbl.onrender.com"; // Replace with your deployed backend URL
 
@@ -164,6 +166,7 @@ function App() {
         />
         S Pranav (Deepu)
       </footer>
+      <Analytics />
     </div>
   );
 }
