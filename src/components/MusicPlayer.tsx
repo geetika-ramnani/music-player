@@ -46,10 +46,10 @@ function MusicPlayer({ token }: MusicPlayerProps) {
     try {
       setIsSearching(true);
       const url = searchQuery
-        ? `https://sdp-ejbl.onrender.com/api/songs?search=${encodeURIComponent(
+        ? `https://music-player-a8lg.onrender.com/api/songs?search=${encodeURIComponent(
             searchQuery
           )}`
-        : "https://sdp-ejbl.onrender.com/api/songs";
+        : "https://music-player-a8lg.onrender.com/api/songs";
 
       const response = await fetch(url, {
         headers: {
@@ -108,7 +108,7 @@ function MusicPlayer({ token }: MusicPlayerProps) {
   const handleLike = async (songId: string) => {
     try {
       const response = await fetch(
-        `https://sdp-ejbl.onrender.com/api/songs/${songId}/like`,
+        `https://music-player-a8lg.onrender.com/${songId}/like`,
         {
           method: "POST",
           headers: {

@@ -31,7 +31,7 @@ function AdminPanel({ token }: AdminPanelProps) {
         formData.append("image", imageFile);
       }
 
-      const response = await fetch("https://sdp-ejbl.onrender.com/api/songs", {
+      const response = await fetch("https://music-player-a8lg.onrender.com/api/songs", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
