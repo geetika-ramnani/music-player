@@ -3,9 +3,10 @@ import { User, Lock } from 'lucide-react';
 
 interface RegisterProps {
   onRegister: (token: string, isAdmin: boolean) => void;
+  backendUrl: string;
 }
 
-function Register({ onRegister}: RegisterProps) {
+function Register({ onRegister, backendUrl}: RegisterProps ) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -13,8 +14,8 @@ function Register({ onRegister}: RegisterProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      console.log("1");
-      const response = await fetch(`https://music-player-a8lg.onrender.com/api/register`, {
+      console.log("Sending request to register:", { username, password });
+      const response = await fetch(`${backendUrl}/api/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -140,9 +140,10 @@ const adminAuth = async (req, res, next) => {
 
 // Auth Routes
 app.post('/api/register', async (req, res) => {
+  console.log("Register API hit");
   try {
     const { username, password } = req.body;
-    const hashedPassword = await bcrypt.hash(password, 8);
+    const hashedPassword = await bcrypt.hash(password, 2);
     const user = new User({ username, password: hashedPassword });
     await user.save();
     
@@ -332,7 +333,7 @@ app.use((error, req, res, next) => {
   res.status(500).send({ error: 'Internal server error' });
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
