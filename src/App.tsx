@@ -93,7 +93,7 @@ function App() {
             </>
           ) : (
             <>
-              <Register onRegister={handleLogin} backendUrl={BACKEND_URL} />
+              <Register onRegister={handleLogin} />
               <button
                 onClick={() => setView("login")}
                 className="mt-4 text-rose-600 hover:text-rose-800 font-medium block mx-auto"

@@ -3,7 +3,6 @@ import { User, Lock } from 'lucide-react';
 
 interface RegisterProps {
   onRegister: (token: string, isAdmin: boolean) => void;
-  backendUrl: string;
 }
 
 function Register({ onRegister}: RegisterProps) {

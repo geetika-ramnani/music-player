@@ -142,17 +142,23 @@ const adminAuth = async (req, res, next) => {
 app.post('/api/register', async (req, res) => {
   try {
     const { username, password } = req.body;
+    console.log("1");
     const hashedPassword = await bcrypt.hash(password, 8);
+    console.log("2");
     const user = new User({ username, password: hashedPassword });
+    console.log("3");
     await user.save();
+    console.log("4");
     
     const token = jwt.sign(
       { userId: user._id },
       process.env.JWT_SECRET || 'your-secret-key',
       { expiresIn: '24h' }
     );
+    console.log("5");
     
     res.status(201).send({ user, token });
+    console.log("6");
   // } catch (error) {
   //   res.status(400).send({ error: 'Registration failed. Username might be taken.' });
   // }
