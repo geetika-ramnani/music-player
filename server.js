@@ -141,6 +141,7 @@ const adminAuth = async (req, res, next) => {
 // Auth Routes
 app.post('/api/register', async (req, res) => {
   try {
+    console.log('Request Body:', req.body);
     const { username, password } = req.body;
     console.log("1");
     const hashedPassword = await bcrypt.hash(password, 8);
