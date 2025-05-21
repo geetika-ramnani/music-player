@@ -6,7 +6,7 @@ interface RegisterProps {
   backendUrl: string;
 }
 
-function Register({ onRegister, backendUrl }: RegisterProps) {
+function Register({ onRegister}: RegisterProps) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -14,7 +14,7 @@ function Register({ onRegister, backendUrl }: RegisterProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${backendUrl}/api/register`, {
+      const response = await fetch(`https://music-player-a8lg.onrender.com/api/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

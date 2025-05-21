@@ -7,7 +7,7 @@ import MusicPlayer from "./components/MusicPlayer";
 import img from "./components/deepu profile.jpeg";
 import Logo from "./components/logo1.svg";
 
-import { Analytics } from "@vercel/analytics/react";
+// import { Analytics } from "@vercel/analytics/react";
 
 // Define the backend URL as a constant
 const BACKEND_URL = "https://music-player-a8lg.onrender.com"; // Replace with your deployed backend URL
@@ -148,9 +148,9 @@ function App() {
 
       <main className="container mx-auto py-8 px-4">
         {view === "admin" && isAdmin ? (
-          <AdminPanel token={token} backendUrl={BACKEND_URL} />
+          <AdminPanel token={token}/>
         ) : (
-          <MusicPlayer token={token} backendUrl={BACKEND_URL} />
+          <MusicPlayer token={token}/>
         )}
       </main>
       {renderDbStatus()}
@@ -166,7 +166,7 @@ function App() {
         />
         S Pranav (Deepu)
       </footer>
-      <Analytics />
+      {/* <Analytics /> */}
     </div>
   );
 }
