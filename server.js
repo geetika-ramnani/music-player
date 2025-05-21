@@ -153,9 +153,16 @@ app.post('/api/register', async (req, res) => {
     );
     
     res.status(201).send({ user, token });
+  // } catch (error) {
+  //   res.status(400).send({ error: 'Registration failed. Username might be taken.' });
+  // }
   } catch (error) {
-    res.status(400).send({ error: 'Registration failed. Username might be taken.' });
+  if (error.code === 11000) {
+    res.status(400).send({ error: 'Username already exists. Choose a different one.' });
+  } else {
+    res.status(500).send({ error: 'Internal server error during registration.' });
   }
+}
 });
 
 app.post('/api/login', async (req, res) => {
@@ -174,9 +181,13 @@ app.post('/api/login', async (req, res) => {
     );
     
     res.send({ user, token });
+  // } catch (error) {
+  //   res.status(400).send({ error: error.message });
+  // }
   } catch (error) {
-    res.status(400).send({ error: error.message });
-  }
+  console.error('Login error:', error.message);
+  res.status(401).send({ error: 'Invalid username or password' });
+}
 });
 
 // Song Routes
