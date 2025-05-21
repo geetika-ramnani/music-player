@@ -13,6 +13,7 @@ function Register({ onRegister}: RegisterProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
+      console.log("1");
       const response = await fetch(`https://music-player-a8lg.onrender.com/api/register`, {
         method: 'POST',
         headers: {
@@ -20,14 +21,18 @@ function Register({ onRegister}: RegisterProps) {
         },
         body: JSON.stringify({ username, password }),
       });
+      console.log("1");
 
       const data = await response.json();
+      console.log("1");
 
       if (!response.ok) {
         throw new Error(data.error || 'Registration failed');
       }
+      console.log("1");
 
       onRegister(data.token, data.user.isAdmin);
+      console.log("1");
     } catch (err) {
       setError(err.message);
     }
