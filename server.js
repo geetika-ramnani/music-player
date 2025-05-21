@@ -22,7 +22,10 @@ cloudinary.config({
 });
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:5173", // frontend origin
+  credentials: true
+}));
 app.use(express.json());
 
 // MongoDB Connection with retry logic
