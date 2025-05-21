@@ -10,7 +10,7 @@ import Logo from "./components/logo1.svg";
 import { Analytics } from "@vercel/analytics/react";
 
 // Define the backend URL as a constant
-const BACKEND_URL = "http://localhost:3000"; // Replace with your deployed backend URL
+const BACKEND_URL = "https://music-player-a8lg.onrender.com"; // Replace with your deployed backend URL
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
