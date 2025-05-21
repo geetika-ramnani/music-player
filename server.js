@@ -141,7 +141,7 @@ const adminAuth = async (req, res, next) => {
 // Auth Routes
 app.post('/api/register', async (req, res) => {
   console.log("Register API hit");
-  try {
+  // try {
     const { username, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 2);
     const user = new User({ username, password: hashedPassword });
@@ -157,13 +157,13 @@ app.post('/api/register', async (req, res) => {
   // } catch (error) {
   //   res.status(400).send({ error: 'Registration failed. Username might be taken.' });
   // }
-  } catch (error) {
-  if (error.code === 11000) {
-    res.status(400).send({ error: 'Username already exists. Choose a different one.' });
-  } else {
-    res.status(500).send({ error: 'Internal server error during registration.' });
-  }
-}
+  // } catch (error) {
+  // if (error.code === 11000) {
+  //   res.status(400).send({ error: 'Username already exists. Choose a different one.' });
+  // } else {
+  //   res.status(500).send({ error: 'Internal server error during registration.' });
+  // }
+// }
 });
 
 app.post('/api/login', async (req, res) => {
