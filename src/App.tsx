@@ -4,8 +4,9 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import AdminPanel from "./components/AdminPanel";
 import MusicPlayer from "./components/MusicPlayer";
-import img from "./components/deepu profile.jpeg";
 import Logo from "./components/logo1.svg";
+import UserSongRequest from "./components/UserSongRequest";
+import AdminSongRequestsPage from "./components/AdminSongRequestsPage";
 
 // import { Analytics } from "@vercel/analytics/react";
 
@@ -128,6 +129,15 @@ function App() {
                 <span>Admin Panel</span>
               </button>
             )}
+            {!isAdmin && (
+              <button
+                onClick={() => setView("request")}
+                className="flex items-center space-x-1 text-rose-600 hover:text-rose-800 transition-colors duration-200"
+              >
+                <Upload className="w-5 h-5" />
+                <span>Request Song Upload</span>
+              </button>
+            )}
             <button
               onClick={() => setView("player")}
               className="flex items-center space-x-1 text-rose-600 hover:text-rose-800 transition-colors duration-200"
@@ -148,23 +158,23 @@ function App() {
 
       <main className="container mx-auto py-8 px-4">
         {view === "admin" && isAdmin ? (
-          <AdminPanel token={token}/>
+          <AdminPanel token={token} />
+        ) : view === "requests" && isAdmin ? (
+          <AdminSongRequestsPage token={token} />
+        ) : view === "request" ? (
+          <UserSongRequest token={token} />
         ) : (
-          <MusicPlayer token={token}/>
+          <MusicPlayer token={token} />
         )}
       </main>
+
       {renderDbStatus()}
       <footer
         className="text-center py-2 shadow-md"
         style={{ backgroundColor: "white", color: "#dc2674" }}
       >
         Built with ❤️ by
-        <img
-          src={img}
-          alt="Avatar"
-          className="inline-block w-6 h-6 rounded-full mx-2"
-        />
-        S Pranav (Deepu)
+        Geetika
       </footer>
       {/* <Analytics /> */}
     </div>

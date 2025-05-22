@@ -22,18 +22,22 @@ cloudinary.config({
 });
 
 const app = express();
+
+// Improved CORS configuration
 const corsOptions = {
-  origin: 'http://localhost:5173', // Or your actual frontend origin
+  origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization', 'multipart/form-data'],
+  credentials: true
 };
 
-// ✅ Use CORS middleware
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
 
+// Body parsing middleware
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 
 // MongoDB Connection with retry logic
 const connectWithRetry = async () => {
@@ -150,10 +154,9 @@ const adminAuth = async (req, res, next) => {
 
 // Auth Routes
 app.post('/api/register', async (req, res) => {
-  console.log("Register API hit");
-  // try {
+  try {
     const { username, password } = req.body;
-    const hashedPassword = await bcrypt.hash(password, 2);
+    const hashedPassword = await bcrypt.hash(password, 8);
     const user = new User({ username, password: hashedPassword });
     await user.save();
     
@@ -164,16 +167,9 @@ app.post('/api/register', async (req, res) => {
     );
     
     res.status(201).send({ user, token });
-  // } catch (error) {
-  //   res.status(400).send({ error: 'Registration failed. Username might be taken.' });
-  // }
-  // } catch (error) {
-  // if (error.code === 11000) {
-  //   res.status(400).send({ error: 'Username already exists. Choose a different one.' });
-  // } else {
-  //   res.status(500).send({ error: 'Internal server error during registration.' });
-  // }
-// }
+  } catch (error) {
+    res.status(400).send({ error: 'Registration failed. Username might be taken.' });
+  }
 });
 
 app.post('/api/login', async (req, res) => {
@@ -192,13 +188,9 @@ app.post('/api/login', async (req, res) => {
     );
     
     res.send({ user, token });
-  // } catch (error) {
-  //   res.status(400).send({ error: error.message });
-  // }
   } catch (error) {
-  console.error('Login error:', error.message);
-  res.status(401).send({ error: 'Invalid username or password' });
-}
+    res.status(400).send({ error: error.message });
+  }
 });
 
 // Song Routes
@@ -206,6 +198,8 @@ const uploadFields = upload.fields([
   { name: 'audio', maxCount: 1 },
   { name: 'image', maxCount: 1 }
 ]);
+
+
 
 app.post('/api/songs', auth, adminAuth, uploadFields, async (req, res) => {
   try {
@@ -343,7 +337,7 @@ app.use((error, req, res, next) => {
   res.status(500).send({ error: 'Internal server error' });
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

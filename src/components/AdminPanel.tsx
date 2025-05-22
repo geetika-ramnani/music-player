@@ -13,6 +13,7 @@ function AdminPanel({ token }: AdminPanelProps) {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [view, setView] = useState("admin"); 
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -102,6 +103,15 @@ function AdminPanel({ token }: AdminPanelProps) {
 
   return (
     <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md">
+      <div className="flex justify-end items-center mb-4">
+        <button
+          onClick={() => setView("requests")}
+          className="bg-rose-600 hover:bg-rose-700 text-white font-semibold py-2 px-4 rounded transition duration-200"
+        >
+          Song Requests
+        </button>
+      </div>
+
       <div className="flex items-center space-x-2 mb-6">
         <Upload className="w-6 h-6 text-blue-500" />
         <h2 className="text-2xl font-bold">Upload Music</h2>

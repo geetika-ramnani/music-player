@@ -108,7 +108,7 @@ function MusicPlayer({ token }: MusicPlayerProps) {
   const handleLike = async (songId: string) => {
     try {
       const response = await fetch(
-        `https://music-player-a8lg.onrender.com/${songId}/like`,
+        `https://music-player-a8lg.onrender.com/api/songs/${songId}/like`,
         {
           method: "POST",
           headers: {
