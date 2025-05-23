@@ -9,7 +9,7 @@ import UserSongRequest from "./components/UserSongRequest";
 import AdminSongRequestsPage from "./components/AdminSongRequestsPage";
 import { Analytics } from "@vercel/analytics/react";
 
-const BACKEND_URL = "https://music-player-a8lg.onrender.com"; // backend URL
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL; // backend URL
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));

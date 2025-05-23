@@ -25,9 +25,9 @@ const app = express();
 
 // Improved CORS configuration
 const corsOptions = {
-  origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'multipart/form-data'],
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 };
 
@@ -37,7 +37,6 @@ app.options('*', cors(corsOptions));
 // Body parsing middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 
 // MongoDB Connection with retry logic
 const connectWithRetry = async () => {
