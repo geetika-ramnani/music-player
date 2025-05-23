@@ -13,7 +13,9 @@ function AdminPanel({ token }: AdminPanelProps) {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [imagePreview, setImagePreview] = useState<string | null>(null);
-  const [view, setView] = useState("admin"); 
+  const [view, setView] = useState("admin");
+  
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL; // backend URL
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,7 +34,7 @@ function AdminPanel({ token }: AdminPanelProps) {
         formData.append("image", imageFile);
       }
 
-      const response = await fetch("https://music-player-a8lg.onrender.com/api/songs", {
+      const response = await fetch(`${BACKEND_URL}/api/songs`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

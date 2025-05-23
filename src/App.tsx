@@ -8,6 +8,7 @@ import Logo from "./components/logo1.svg";
 import UserSongRequest from "./components/UserSongRequest";
 import AdminSongRequestsPage from "./components/AdminSongRequestsPage";
 import { Analytics } from "@vercel/analytics/react";
+import { Client } from 'appwrite';
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL; // backend URL
 
@@ -45,6 +46,10 @@ function App() {
 
     return () => clearInterval(interval);
   }, []);
+  const client = new Client();
+  client
+      .setEndpoint('https://fra.cloud.appwrite.io/v1')
+      .setProject('6830208d001a5a9fe2db');
 
   const handleLogin = (newToken: string, admin: boolean) => {
     setToken(newToken);

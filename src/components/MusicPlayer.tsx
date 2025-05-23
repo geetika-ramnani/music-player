@@ -34,6 +34,8 @@ function MusicPlayer({ token }: MusicPlayerProps) {
   const [error, setError] = useState("");
   const [isSearching, setIsSearching] = useState(false);
 
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL; // backend URL
+
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
       fetchSongs();
@@ -46,10 +48,10 @@ function MusicPlayer({ token }: MusicPlayerProps) {
     try {
       setIsSearching(true);
       const url = searchQuery
-        ? `https://music-player-a8lg.onrender.com/api/songs?search=${encodeURIComponent(
+        ? `${BACKEND_URL}/api/songs?search=${encodeURIComponent(
             searchQuery
           )}`
-        : "https://music-player-a8lg.onrender.com/api/songs";
+        : `${BACKEND_URL}/api/songs`;
 
       const response = await fetch(url, {
         headers: {
@@ -108,7 +110,7 @@ function MusicPlayer({ token }: MusicPlayerProps) {
   const handleLike = async (songId: string) => {
     try {
       const response = await fetch(
-        `https://music-player-a8lg.onrender.com/api/songs/${songId}/like`,
+        `${BACKEND_URL}/api/songs/${songId}/like`,
         {
           method: "POST",
           headers: {
