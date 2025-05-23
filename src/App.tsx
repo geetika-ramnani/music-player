@@ -7,11 +7,9 @@ import MusicPlayer from "./components/MusicPlayer";
 import Logo from "./components/logo1.svg";
 import UserSongRequest from "./components/UserSongRequest";
 import AdminSongRequestsPage from "./components/AdminSongRequestsPage";
+import { Analytics } from "@vercel/analytics/react";
 
-// import { Analytics } from "@vercel/analytics/react";
-
-// Define the backend URL as a constant
-const BACKEND_URL = "https://music-player-a8lg.onrender.com"; // Replace with your deployed backend URL
+const BACKEND_URL = "https://music-player-a8lg.onrender.com"; // backend URL
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -176,7 +174,7 @@ function App() {
         Built with ❤️ by
         Geetika
       </footer>
-      {/* <Analytics /> */}
+      <Analytics />
     </div>
   );
 }
