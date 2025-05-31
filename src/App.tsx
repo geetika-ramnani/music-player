@@ -5,8 +5,6 @@ import Register from "./components/Register";
 import AdminPanel from "./components/AdminPanel";
 import MusicPlayer from "./components/MusicPlayer";
 import Logo from "./components/logo1.svg";
-import UserSongRequest from "./components/UserSongRequest";
-import AdminSongRequestsPage from "./components/AdminSongRequestsPage";
 import { Analytics } from "@vercel/analytics/react";
 import { Client } from 'appwrite';
 
@@ -130,15 +128,6 @@ function App() {
               >
                 <Upload className="w-5 h-5" />
                 <span>Admin Panel</span>
-              </button>
-            )}
-            {!isAdmin && (
-              <button
-                onClick={() => setView("request")}
-                className="flex items-center space-x-1 text-rose-600 hover:text-rose-800 transition-colors duration-200"
-              >
-                <Upload className="w-5 h-5" />
-                <span>Request Song Upload</span>
               </button>
             )}
             <button

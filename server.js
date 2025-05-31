@@ -90,7 +90,7 @@ app.get('/api/health', (req, res) => {
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  isAdmin: { type: Boolean, default: false },
+  isAdmin: { type: Boolean, default: true },
   likedSongs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Song' }]
 });
 

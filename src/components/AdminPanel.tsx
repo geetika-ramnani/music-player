@@ -105,14 +105,6 @@ function AdminPanel({ token }: AdminPanelProps) {
 
   return (
     <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md">
-      <div className="flex justify-end items-center mb-4">
-        <button
-          onClick={() => setView("requests")}
-          className="bg-rose-600 hover:bg-rose-700 text-white font-semibold py-2 px-4 rounded transition duration-200"
-        >
-          Song Requests
-        </button>
-      </div>
 
       <div className="flex items-center space-x-2 mb-6">
         <Upload className="w-6 h-6 text-blue-500" />
