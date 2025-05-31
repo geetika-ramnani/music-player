@@ -117,7 +117,7 @@ function App() {
           <div className="flex items-center space-x-2">
             <img src={Logo} alt="Logo" className="w-10 h-10 rounded-full" />
             <span className="text-xl font-bold bg-gradient-to-r from-rose-600 to-pink-600 text-transparent bg-clip-text">
-              SD Player
+              Your Music Player
             </span>
           </div>
           <div className="flex items-center space-x-4">
